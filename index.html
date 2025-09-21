@@ -179,4 +179,8 @@ function calcPen(){const cuota=parseFloat(document.getElementById('cuota').value
 ['input','change'].forEach(ev=>['cuota','fechaInicio','mesesPermanencia','fechaBaja'].forEach(id=>document.getElementById(id).addEventListener(ev,calcPen)));
 addTap('btnPermanencia',calcPen);addTap('btnPermanenciaClear',()=>{['cuota','fechaInicio','mesesPermanencia'].forEach(id=>document.getElementById(id).value='');setTodayIfEmpty();document.getElementById('resultadoPermanencia').textContent='';});
 
-/
+/* Demo */
+addTap('btnDemo',()=>{cardInput.value='4539319503436467';normalizeCard();liveCard();ccc.value='00810052000004400044';liveCCC();document.getElementById('a').value='2';document.getElementById('b').value='4';document.getElementById('c').value='8';document.getElementById('cuota').value='20';document.getElementById('fechaInicio').value='2025-01-01';document.getElementById('mesesPermanencia').value='24';setTodayIfEmpty();calcPen();});
+</script>
+</body>
+</html>
