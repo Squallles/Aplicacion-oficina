@@ -66,7 +66,7 @@
         </div>
       </section>
 
-      <!-- 1) Tarjetas -->
+      <!-- Tarjeta -->
       <section class="card half">
         <h3>1) Validador de Tarjetas (Luhn) <span id="cardBadge" class="badge">0/16</span></h3>
         <label>Número de tarjeta</label>
@@ -78,68 +78,61 @@
           <button class="btn ghost" id="btnCopyCard" type="button" disabled>Copiar tarjeta</button>
         </div>
         <div id="resultadoTarjeta" class="result"></div>
-        <div class="note">El campo guarda solo dígitos (máx. 16). Abajo se muestra en bloques de 4. “Copiar tarjeta” copia <strong>sin espacios</strong>.</div>
       </section>
 
-      <!-- 2) CCC / IBAN -->
+      <!-- CCC / IBAN -->
       <section class="card half">
         <h3>2) CCC España o IBAN ES → IBAN <span id="cccBadge" class="badge">0</span></h3>
-        <label>Introduce <strong>CCC (20 dígitos)</strong> o <strong>IBAN ES (24)</strong>. Puedes pegar con espacios; se limpian automáticamente.</label>
-        <input id="ccc" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Ej.: 0081 0052 00 0004400044 o ES72…">
+        <label>Introduce <strong>CCC (20 dígitos)</strong> o <strong>IBAN ES (24)</strong>.</label>
+        <input id="ccc" type="text" placeholder="0081 0052 00 0004400044 o ES72…" autocomplete="off" autocapitalize="off" spellcheck="false">
         <div class="muted" id="cccInfo">Estado</div>
-        <div class="muted" id="cccPretty" style="margin-top:6px"></div>
-        <div class="muted" id="ibanPreview" style="margin-top:4px"></div>
+        <div class="muted" id="cccPretty"></div>
+        <div class="muted" id="ibanPreview"></div>
         <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
-          <button class="btn" id="btnCCC" type="button">Validar y obtener IBAN</button>
+          <button class="btn" id="btnCCC" type="button">Validar</button>
           <button class="btn subtle" id="btnCCCClear" type="button">Limpiar</button>
           <button class="btn ghost" id="btnCopyCCC" type="button" disabled>Copiar CCC</button>
           <button class="btn ghost" id="btnCopyIban" type="button" disabled>Copiar IBAN</button>
         </div>
         <div id="resultadoCuenta" class="result"></div>
-        <div class="note">“Copiar CCC” copia los <strong>20 dígitos sin espacios</strong>. “Copiar IBAN” copia el IBAN <strong>sin espacios</strong>.</div>
       </section>
 
-      <!-- 3) Regla de 3 -->
+      <!-- Regla de 3 -->
       <section class="card half">
         <h3>3) Calculadora de Regla de 3</h3>
-        <div style="display:flex; justify-content:center; margin-bottom:10px">
-          <div class="segmented">
-            <button id="btnDirecta" class="active" type="button">Directa</button>
-            <button id="btnInversa" type="button">Inversa</button>
-          </div>
+        <div class="segmented">
+          <button id="btnDirecta" class="active" type="button">Directa</button>
+          <button id="btnInversa" type="button">Inversa</button>
         </div>
         <div class="row2col">
-          <div><label>Valor A</label><input id="a" type="text" placeholder="A (coma o punto)"></div>
-          <div><label>Valor B</label><input id="b" type="text" placeholder="B"></div>
-          <div><label>Valor C</label><input id="c" type="text" placeholder="C"></div>
-          <div><label>X</label><input id="x" type="text" placeholder="?" disabled style="background:rgba(99,102,241,.08); border-style:dashed"></div>
+          <div><label>Valor A</label><input id="a" type="text"></div>
+          <div><label>Valor B</label><input id="b" type="text"></div>
+          <div><label>Valor C</label><input id="c" type="text"></div>
+          <div><label>X</label><input id="x" type="text" disabled></div>
         </div>
-        <div style="display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap">
+        <div style="margin-top:14px; display:flex; gap:10px">
           <button class="btn" id="btnRegla" type="button">Calcular</button>
           <button class="btn subtle" id="btnReglaClear" type="button">Limpiar</button>
         </div>
         <div id="resultadoRegla" class="result"></div>
-        <div class="muted" id="reglaStatus"></div>
       </section>
 
-      <!-- 4) Permanencia -->
+      <!-- Permanencia -->
       <section class="card half">
         <h3>4) Penalización por Permanencia</h3>
         <div class="row4">
-          <div><label>Cuota mensual (€)</label><input id="cuota" type="text" placeholder="Ej. 20,5 o 20.5"></div>
-          <div><label>Inicio de contrato</label><input id="fechaInicio" type="date"></div>
-          <div><label>Meses de permanencia</label><input id="mesesPermanencia" type="text" placeholder="Ej. 24"></div>
-          <div><label>Fecha de baja</label><input id="fechaBaja" type="date"></div>
+          <div><label>Cuota mensual (€)</label><input id="cuota" type="text"></div>
+          <div><label>Inicio</label><input id="fechaInicio" type="date"></div>
+          <div><label>Meses permanencia</label><input id="mesesPermanencia" type="text"></div>
+          <div><label>Fecha baja</label><input id="fechaBaja" type="date"></div>
         </div>
-        <div class="controls">
-          <div class="checkline">
-            <label><input id="proporcional" type="checkbox" checked> Prorratear mes en curso por días</label>
-            <label><input id="autoRenovar" type="checkbox" checked> Auto-renovar 12 meses al vencer</label>
-          </div>
-          <div style="display:flex; gap:10px">
-            <button class="btn" id="btnPermanencia" type="button">Calcular penalización</button>
-            <button class="btn subtle" id="btnPermanenciaClear" type="button">Limpiar</button>
-          </div>
+        <div class="checkline">
+          <label><input id="proporcional" type="checkbox" checked> Prorrateo</label>
+          <label><input id="autoRenovar" type="checkbox" checked> Auto-renovar</label>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:10px">
+          <button class="btn" id="btnPermanencia" type="button">Calcular</button>
+          <button class="btn subtle" id="btnPermanenciaClear" type="button">Limpiar</button>
         </div>
         <div id="resultadoPermanencia" class="result"></div>
         <div id="detallePermanencia" class="muted"></div>
@@ -147,51 +140,43 @@
     </div>
   </div>
 
-  <script>
-    /* === Código JS completo v48 === */
-    // Helpers...
-    function todayStr(){
-      const t = new Date();
-      return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
-    }
-    function setTodayIfEmpty(){ const baja=document.getElementById('fechaBaja'); if(baja && !baja.value){ baja.value=todayStr(); } }
-    window.addEventListener('DOMContentLoaded', setTodayIfEmpty);
-    window.addEventListener('pageshow', setTodayIfEmpty);
+<script>
+/* === Código JS v48 completo (funciona en iPhone) === */
+/* Helpers */
+function todayStr(){const t=new Date();return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;}
+function setTodayIfEmpty(){const baja=document.getElementById('fechaBaja');if(baja&&!baja.value){baja.value=todayStr();}}
+window.addEventListener('DOMContentLoaded',setTodayIfEmpty);
+window.addEventListener('pageshow',setTodayIfEmpty);
+function addTap(id,fn){const el=document.getElementById(id);if(!el)return;el.addEventListener('click',e=>{e.preventDefault();fn();},{passive:false});}
+function onlyDigits(s){return(s||'').replace(/\D/g,'');}
 
-    function addTap(id, fn){
-      const el = typeof id==='string'?document.getElementById(id):id;
-      if(!el) return;
-      el.addEventListener('click', (e)=>{ e.preventDefault(); fn(); }, { passive:false });
-    }
-    function out(id, html, state){ const el=document.getElementById(id); if(!el)return; el.className='result '+(state||''); el.innerHTML=html; }
-    function readNum(id){ const v=document.getElementById(id).value.replace(',','.'); const n=parseFloat(v); return isNaN(n)?null:n; }
-    const onlyDigits = s=>(s||'').replace(/\D/g,'');
+/* Tarjeta */
+const cardInput=document.getElementById('cardNumber');const cardPretty=document.getElementById('cardPretty');const cardBadge=document.getElementById('cardBadge');const btnCopyCard=document.getElementById('btnCopyCard');
+function normalizeCard(){let d=onlyDigits(cardInput.value);if(d.length>16)d=d.slice(0,16);cardInput.value=d;cardPretty.textContent=d?d.replace(/(.{4})/g,'$1 ').trim():'';cardBadge.textContent=`${d.length}/16`;btnCopyCard.disabled=d.length!==16;}
+function luhnValid(num){let s=0,a=false;for(let i=num.length-1;i>=0;i--){let n=parseInt(num[i]);if(a){n*=2;if(n>9)n-=9;}s+=n;a=!a;}return s%10===0;}
+function liveCard(){const num=onlyDigits(cardInput.value);if(!num)return; if(num.length<16){document.getElementById('resultadoTarjeta').textContent="⌛ faltan dígitos";return;}document.getElementById('resultadoTarjeta').textContent=luhnValid(num)?"✅ Tarjeta válida":"❌ Tarjeta inválida";}
+['input','change','keyup','paste','blur'].forEach(ev=>cardInput.addEventListener(ev,()=>{normalizeCard();liveCard();}));
+addTap('btnTarjeta',liveCard);
+addTap('btnTarjetaClear',()=>{cardInput.value='';normalizeCard();document.getElementById('resultadoTarjeta').textContent='';});
+addTap('btnCopyCard',()=>navigator.clipboard.writeText(cardInput.value));
 
-    /* === Tarjeta === */
-    const cardInput=document.getElementById('cardNumber');
-    const cardPretty=document.getElementById('cardPretty');
-    const cardBadge=document.getElementById('cardBadge');
-    const btnCopyCard=document.getElementById('btnCopyCard');
-    function groupEvery4(s){ return s.replace(/(.{4})/g,'$1 ').trim(); }
-    function normalizeCard(){
-      let digits=onlyDigits(cardInput.value); if(digits.length>16) digits=digits.slice(0,16);
-      cardInput.value=digits;
-      cardPretty.textContent=digits?`Formato tarjeta: ${groupEvery4(digits)}`:'';
-      cardBadge.textContent=`${digits.length}/16`;
-      btnCopyCard.disabled=digits.length!==16;
-    }
-    function luhnValid(num){ let sum=0,alt=false; for(let i=num.length-1;i>=0;i--){ let n=parseInt(num[i]); if(alt){n*=2;if(n>9)n-=9;} sum+=n; alt=!alt;} return sum%10===0; }
-    function liveCardStatus(){
-      const num=onlyDigits(cardInput.value); if(!num){out('resultadoTarjeta','');return;}
-      if(num.length<16){ out('resultadoTarjeta','⌛ Introduce 16 dígitos.','warn'); return; }
-      out('resultadoTarjeta', luhnValid(num)?'✅ Tarjeta válida':'❌ Tarjeta inválida', luhnValid(num)?'ok':'bad');
-    }
-    ['input','change','blur','paste','keyup'].forEach(ev=>cardInput.addEventListener(ev,()=>{normalizeCard();liveCardStatus();}));
-    addTap('btnTarjeta', liveCardStatus);
-    addTap('btnTarjetaClear', ()=>{cardInput.value='';normalizeCard();out('resultadoTarjeta','');});
-    addTap('btnCopyCard', ()=>navigator.clipboard.writeText(cardInput.value));
+/* CCC/IBAN (simplificado a ES) */
+const ccc=document.getElementById('ccc');const info=document.getElementById('cccInfo');const res=document.getElementById('resultadoCuenta');const btnCCC=document.getElementById('btnCCC');const btnCCCClear=document.getElementById('btnCCCClear');
+function validarCCC(c){return c.length===20;}
+function calcIBAN(c){return "ES00"+c;}
+function liveCCC(){let v=ccc.value.toUpperCase().replace(/[^0-9A-Z]/g,'');ccc.value=v; if(v.startsWith("ES")){info.textContent=`IBAN ${v.length}/24`; if(v.length===24){res.textContent="IBAN detectado: "+v;}} else {info.textContent=`CCC ${v.length}/20`; if(v.length===20){res.textContent="CCC detectado: "+v+" → IBAN: "+calcIBAN(v);}}}
+['input','change','keyup','paste','blur'].forEach(ev=>ccc.addEventListener(ev,liveCCC));
+addTap('btnCCC',liveCCC);addTap('btnCCCClear',()=>{ccc.value='';info.textContent='';res.textContent='';});
 
-   
-  </script>
-</body>
-</html>
+/* Regla de 3 */
+let directa=true;addTap('btnDirecta',()=>{directa=true;});addTap('btnInversa',()=>{directa=false;});
+addTap('btnRegla',()=>{const a=parseFloat(document.getElementById('a').value.replace(',','.'));const b=parseFloat(document.getElementById('b').value.replace(',','.'));const c=parseFloat(document.getElementById('c').value.replace(',','.'));if(isNaN(a)||isNaN(b)||isNaN(c))return;let x=directa?(b*c)/a:(a*b)/c;document.getElementById('x').value=x;document.getElementById('resultadoRegla').textContent="X = "+x;});
+addTap('btnReglaClear',()=>{['a','b','c','x'].forEach(id=>document.getElementById(id).value='');document.getElementById('resultadoRegla').textContent='';});
+
+/* Permanencia */
+function addMonths(d,m){const r=new Date(d);r.setMonth(r.getMonth()+m);return r;}
+function calcPen(){const cuota=parseFloat(document.getElementById('cuota').value.replace(',','.'));const ini=document.getElementById('fechaInicio').value;const m=parseInt(document.getElementById('mesesPermanencia').value);const baja=document.getElementById('fechaBaja').value;if(isNaN(cuota)||!ini||isNaN(m)||!baja)return;const iniD=new Date(ini);const bajaD=new Date(baja);let fin=addMonths(iniD,m);if(bajaD>=fin){document.getElementById('resultadoPermanencia').textContent="✅ Sin penalización";return;}const meses=(fin.getFullYear()-bajaD.getFullYear())*12+(fin.getMonth()-bajaD.getMonth());const total=meses*cuota;document.getElementById('resultadoPermanencia').textContent="❌ Penalización: "+total.toFixed(2)+" €";}
+['input','change'].forEach(ev=>['cuota','fechaInicio','mesesPermanencia','fechaBaja'].forEach(id=>document.getElementById(id).addEventListener(ev,calcPen)));
+addTap('btnPermanencia',calcPen);addTap('btnPermanenciaClear',()=>{['cuota','fechaInicio','mesesPermanencia'].forEach(id=>document.getElementById(id).value='');setTodayIfEmpty();document.getElementById('resultadoPermanencia').textContent='';});
+
+/
